@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E1A6C97D2F0FC6430082D65B /* AIAssistantKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1A6C97C2F0FC6430082D65B /* AIAssistantKit */; };
 		E1EB820E2F0FBE3800873310 /* AIAssistantKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1EB820D2F0FBE3800873310 /* AIAssistantKit */; };
+		E1F7C98E2F0FC7540082D65C /* HIGPackage in Frameworks */ = {isa = PBXBuildFile; productRef = E1F7C98D2F0FC7540082D65C /* HIGPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 			files = (
 				E1A6C97D2F0FC6430082D65B /* AIAssistantKit in Frameworks */,
 				E1EB820E2F0FBE3800873310 /* AIAssistantKit in Frameworks */,
+				E1F7C98E2F0FC7540082D65C /* HIGPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				E1EB820D2F0FBE3800873310 /* AIAssistantKit */,
 				E1A6C97C2F0FC6430082D65B /* AIAssistantKit */,
+				E1F7C98D2F0FC7540082D65C /* HIGPackage */,
 			);
 			productName = AIAssistantApp;
 			productReference = E16AA3662F0F9C8E00D67044 /* AIAssistantApp.app */;
@@ -206,6 +209,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E1A6C97B2F0FC6430082D65B /* XCLocalSwiftPackageReference "AIAssistantKit" */,
+				E1F7C98C2F0FC7540082D65C /* XCLocalSwiftPackageReference "HIG" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E16AA3672F0F9C8E00D67044 /* Products */;
@@ -633,6 +637,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = AIAssistantKit;
 		};
+		E1F7C98C2F0FC7540082D65C /* XCLocalSwiftPackageReference "HIG" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = HIG;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -643,6 +651,10 @@
 		E1EB820D2F0FBE3800873310 /* AIAssistantKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AIAssistantKit;
+		};
+		E1F7C98D2F0FC7540082D65C /* HIGPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HIGPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

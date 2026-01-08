@@ -1,0 +1,3 @@
+[submodule "HIG"]
+	path = HIG
+	url = https://github.com/littlesunshine0/HIG.git
