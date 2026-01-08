@@ -46,7 +46,7 @@ public enum WorkspaceTab: String, CaseIterable, Identifiable {
     case tasks = "Tasks"
     case documents = "Documents"
     
-    var id: String { rawValue }
+     var id: String { rawValue }
 }
 
 private struct ProjectsView: View {
