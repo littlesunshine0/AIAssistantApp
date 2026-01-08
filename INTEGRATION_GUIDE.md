@@ -39,8 +39,10 @@ Contains views following HIG design patterns:
 
 ```swift
 import AIAssistantKit  // For AI functionality
-import HIGPackage      // For HIG documentation and utilities
+import HIGPackage      // For HIG documentation and utilities (product from HIG repository)
 ```
+
+**Note:** The HIG repository provides a package product named `HIGPackage`. When importing, use `import HIGPackage`, not `import HIG`.
 
 ### Using AIAssistantKit Components
 

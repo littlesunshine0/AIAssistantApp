@@ -15,7 +15,7 @@ public class ConversationMemoryManager {
     public init() {}
     
     public func clearConversation(_ id: String) {
-        conversations[id] = []
+        conversations.removeValue(forKey: id)
     }
     
     public func addMessage(_ message: String, to conversationId: String) {

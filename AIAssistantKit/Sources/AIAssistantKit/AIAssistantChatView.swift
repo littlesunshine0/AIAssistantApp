@@ -98,7 +98,7 @@ public struct AIAssistantChatView: View {
     }
 }
 
-struct MessageBubble: View {
+private struct MessageBubble: View {
     let message: String
     let isUser: Bool
     

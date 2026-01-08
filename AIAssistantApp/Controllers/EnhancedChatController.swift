@@ -20,8 +20,8 @@ final class EnhancedChatController: ObservableObject {
     
     // MARK: - AIAssistantKit Integration
     
-    /// AI provider from AIAssistantKit
-    @Published var aiProvider: DefaultAIProvider
+    /// AI provider from AIAssistantKit (using protocol for flexibility)
+    @Published var aiProvider: any AIProvider
     
     /// Conversation memory manager from AIAssistantKit
     let memoryManager = ConversationMemoryManager()

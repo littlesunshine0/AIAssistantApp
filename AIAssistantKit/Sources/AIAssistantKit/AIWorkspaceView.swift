@@ -41,7 +41,7 @@ public struct AIWorkspaceView: View {
     }
 }
 
-enum WorkspaceTab: String, CaseIterable, Identifiable {
+public enum WorkspaceTab: String, CaseIterable, Identifiable {
     case projects = "Projects"
     case tasks = "Tasks"
     case documents = "Documents"
@@ -49,7 +49,7 @@ enum WorkspaceTab: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-struct ProjectsView: View {
+private struct ProjectsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -91,7 +91,7 @@ struct ProjectsView: View {
     }
 }
 
-struct TasksView: View {
+private struct TasksView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -128,7 +128,7 @@ struct TasksView: View {
     }
 }
 
-struct DocumentsView: View {
+private struct DocumentsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
