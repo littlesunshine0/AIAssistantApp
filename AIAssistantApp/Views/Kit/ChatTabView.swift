@@ -12,6 +12,7 @@ import AIAssistantKit
 /// Chat tab view providing the AI chat interface.
 struct ChatTabView: View {
     @EnvironmentObject var controller: AppController
+    @State private var showHistory = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -20,18 +21,21 @@ struct ChatTabView: View {
             
             Divider()
             
-            // Chat interface
-            AIAssistantChatView(
+            // Enhanced chat interface with all new features
+            EnhancedChatView(
                 provider: controller.aiProvider,
                 isExpanded: $controller.isChatExpanded,
                 height: $controller.chatHeight,
-                conversationId: controller.currentConversationId,
-                configuration: .default
+                conversationId: controller.currentConversationId
             )
         }
         .navigationTitle("AI Chat")
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
+                Button(action: { showHistory = true }) {
+                    Label("History", systemImage: "clock.arrow.circlepath")
+                }
+                
                 Button(action: controller.createNewConversation) {
                     Label("New Conversation", systemImage: "plus.message")
                 }
@@ -40,6 +44,10 @@ struct ChatTabView: View {
                     Label("Clear", systemImage: "trash")
                 }
             }
+        }
+        .sheet(isPresented: $showHistory) {
+            ConversationHistoryView()
+                .frame(width: 800, height: 600)
         }
     }
     
@@ -52,33 +60,53 @@ struct ChatTabView: View {
                 .font(.title2)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("AI Assistant Chat")
+                Text("Enhanced AI Chat")
                     .font(.headline)
                 
-                Text("Ask anything or get help with your code")
+                Text("Advanced features: streaming, code highlighting, offline knowledge")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
             
             Spacer()
             
-            // Suggestions indicator
-            if !controller.aiProvider.suggestions.isEmpty {
-                HStack(spacing: 4) {
-                    Image(systemName: "lightbulb.fill")
-                        .foregroundColor(.yellow)
-                    Text("\(controller.aiProvider.suggestions.count) suggestions")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.yellow.opacity(0.1))
-                .cornerRadius(8)
+            // Feature badges
+            HStack(spacing: 8) {
+                FeatureBadge(icon: "bolt.fill", color: .orange, text: "Streaming")
+                FeatureBadge(icon: "text.quote", color: .blue, text: "Markdown")
+                FeatureBadge(icon: "chevron.left.forwardslash.chevron.right", color: .green, text: "Code")
             }
         }
         .padding()
-        .background(Color(.controlBackgroundColor))
+        .background(
+            LinearGradient(
+                colors: [Color.purple.opacity(0.1), Color.blue.opacity(0.1)],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
+    }
+}
+
+// MARK: - Feature Badge
+
+struct FeatureBadge: View {
+    let icon: String
+    let color: Color
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: icon)
+                .font(.caption2)
+            Text(text)
+                .font(.caption2)
+        }
+        .foregroundColor(color)
+        .padding(.horizontal, 6)
+        .padding(.vertical, 3)
+        .background(color.opacity(0.15))
+        .cornerRadius(6)
     }
 }
 

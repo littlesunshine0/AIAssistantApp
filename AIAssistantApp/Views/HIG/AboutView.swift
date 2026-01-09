@@ -42,15 +42,20 @@ struct AboutView: View {
             
             // Description
             VStack(alignment: .leading, spacing: 12) {
-                Text("Features:")
+                Text("Enhanced Features:")
                     .font(.headline)
                 
-                FeatureRow(icon: "message.fill", text: "AI-powered chat interface")
-                FeatureRow(icon: "wand.and.stars", text: "Code generation and refactoring")
-                FeatureRow(icon: "square.grid.2x2", text: "Comprehensive workspace management")
-                FeatureRow(icon: "brain.head.profile", text: "Context-aware suggestions")
+                FeatureRow(icon: "message.fill", text: "AI-powered chat with streaming responses")
+                FeatureRow(icon: "wand.and.stars", text: "Code generation with syntax highlighting")
+                FeatureRow(icon: "square.grid.2x2", text: "Advanced project and task management")
+                FeatureRow(icon: "brain.head.profile", text: "Offline knowledge base for AI context")
+                FeatureRow(icon: "text.quote", text: "Markdown rendering in messages")
+                FeatureRow(icon: "chevron.left.forwardslash.chevron.right", text: "Code block detection and highlighting")
+                FeatureRow(icon: "star.fill", text: "Message favorites and reactions")
+                FeatureRow(icon: "clock.arrow.circlepath", text: "Full conversation history")
+                FeatureRow(icon: "square.and.arrow.up", text: "Export/import conversations")
                 FeatureRow(icon: "mic.fill", text: "Voice input support")
-                FeatureRow(icon: "doc.text", text: "Markdown and code rendering")
+                FeatureRow(icon: "doc.text", text: "Rich document management")
             }
             .padding(.horizontal, 40)
             
