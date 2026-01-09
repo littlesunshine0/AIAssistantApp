@@ -1,0 +1,13 @@
+[
+  {
+    "id": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890",
+    "title": "Swift Async/Await Best Practices",
+    "content": "# Swift Async/Await Best Practices\n\n## Sequential operations\n```swift\nfunc fetchUserData() async throws -> User {\n    let profile = try await fetchProfile()\n    let settings = try await fetchSettings()\n    return User(profile: profile, settings: settings)\n}\n```",
+    "category": "Programming",
+    "tags": ["swift", "async"],
+    "createdAt": "2025-01-09T03:00:00Z",
+    "lastAccessed": "2025-01-09T03:00:00Z",
+    "accessCount": 0,
+    "source": "Swift Documentation"
+  }
+]

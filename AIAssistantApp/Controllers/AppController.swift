@@ -39,7 +39,7 @@ final class AppController: ObservableObject {
     @Published var chatHeight: CGFloat = 400
     
     /// Current conversation ID
-    @Published var currentConversationId: String = "main"
+    @Published var currentConversationId: UUID = UUID()
     
     // MARK: - Services
     
@@ -65,12 +65,12 @@ final class AppController: ObservableObject {
     }
     
     func createNewConversation() {
-        currentConversationId = UUID().uuidString
+        currentConversationId = UUID()
         isChatExpanded = true
     }
     
     func clearCurrentConversation() {
-        memoryManager.clearConversation(currentConversationId)
+        memoryManager.clearConversation(currentConversationId.uuidString)
     }
 }
 
