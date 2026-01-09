@@ -87,18 +87,18 @@ public class ChatViewModel: ObservableObject {
     public func toggleFavorite(_ messageId: UUID) {
         if let index = messages.firstIndex(where: { $0.id == messageId }) {
             messages[index].isFavorite.toggle()
-            Task { await saveConversation() }
+            Task { @MainActor in await saveConversation() }
         }
     }
     
     public func deleteMessage(_ messageId: UUID) {
         messages.removeAll { $0.id == messageId }
-        Task { await saveConversation() }
+        Task { @MainActor in await saveConversation() }
     }
     
     public func clearMessages() {
         messages.removeAll()
-        Task { await saveConversation() }
+        Task { @MainActor in await saveConversation() }
     }
     
     public func useSuggestedPrompt(_ prompt: SuggestedPrompt) {
@@ -107,7 +107,7 @@ public class ChatViewModel: ObservableObject {
     }
     
     private func loadConversation() {
-        Task {
+        Task { @MainActor in
             if let conversation = try? storage.loadConversation(id: conversationId) {
                 messages = conversation.messages
             }
@@ -187,7 +187,7 @@ public class KnowledgeBaseViewModel: ObservableObject {
     
     public func loadEntries() {
         isLoading = true
-        Task {
+        Task { @MainActor in
             do {
                 var loadedEntries = try storage.loadAllKnowledgeEntries()
                 
@@ -210,7 +210,7 @@ public class KnowledgeBaseViewModel: ObservableObject {
     }
     
     public func addEntry(_ entry: KnowledgeEntry) {
-        Task {
+        Task { @MainActor in
             do {
                 try storage.saveKnowledgeEntry(entry)
                 await loadEntries()
@@ -221,7 +221,7 @@ public class KnowledgeBaseViewModel: ObservableObject {
     }
     
     public func deleteEntry(_ id: UUID) {
-        Task {
+        Task { @MainActor in
             do {
                 try storage.deleteKnowledgeEntry(id: id)
                 entries.removeAll { $0.id == id }
@@ -236,7 +236,7 @@ public class KnowledgeBaseViewModel: ObservableObject {
             entries[index].lastAccessed = Date()
             entries[index].accessCount += 1
             
-            Task {
+            Task { @MainActor in
                 try? storage.saveKnowledgeEntry(entries[index])
             }
         }
@@ -260,7 +260,7 @@ public class WorkspaceViewModel: ObservableObject {
     
     public func loadProjects() {
         isLoading = true
-        Task {
+        Task { @MainActor in
             do {
                 projects = try storage.loadAllProjects()
             } catch {
@@ -271,7 +271,7 @@ public class WorkspaceViewModel: ObservableObject {
     }
     
     public func addProject(_ project: Project) {
-        Task {
+        Task { @MainActor in
             do {
                 try storage.saveProject(project)
                 projects.append(project)
@@ -284,14 +284,14 @@ public class WorkspaceViewModel: ObservableObject {
     public func updateProject(_ project: Project) {
         if let index = projects.firstIndex(where: { $0.id == project.id }) {
             projects[index] = project
-            Task {
+            Task { @MainActor in
                 try? storage.saveProject(project)
             }
         }
     }
     
     public func deleteProject(_ id: UUID) {
-        Task {
+        Task { @MainActor in
             do {
                 try storage.deleteProject(id: id)
                 projects.removeAll { $0.id == id }
