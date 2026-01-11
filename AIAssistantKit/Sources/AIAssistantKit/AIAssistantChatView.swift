@@ -81,18 +81,14 @@ public struct AIAssistantChatView: View {
         inputText = ""
         isProcessing = true
         
-        Task {
+        Task { @MainActor in
             do {
                 let response = try await provider.ask(query: userMessage, context: nil)
-                await MainActor.run {
-                    messages.append((response.message, false))
-                    isProcessing = false
-                }
+                messages.append((response.message, false))
+                isProcessing = false
             } catch {
-                await MainActor.run {
-                    messages.append(("Error: \(error.localizedDescription)", false))
-                    isProcessing = false
-                }
+                messages.append(("Error: \(error.localizedDescription)", false))
+                isProcessing = false
             }
         }
     }
